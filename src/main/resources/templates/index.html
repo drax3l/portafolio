@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio</title>
+    <link rel="stylesheet" href="/src/main/resources/static/css/main.css">
+    <div th:replace="partials/head :: head"></div>
+
+    <style>
+        /* General */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f9;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffdd57;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            background: white;
+            width: 25px;
+            height: 3px;
+            margin: 4px;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+                background: #333;
+                padding: 10px;
+                border-radius: 8px;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .nav-links.show {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #6c63ff, #8e44ad);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2em;
+            gap: 2em;
+            flex-grow: 1;
+        }
+
+        .header-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        .header-image {
+            flex: 0.4;
+        }
+
+        .header-image img {
+            max-width: 100%;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #6c63ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #8e44ad;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="/">Mi Logo</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">Sobre mí</a></li>
+            <li><a href="/contact">Contáctanos</a></li>
+        </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="header-text">
+            <h1>Bienvenido a Mi Portafolio</h1>
+            <p>Hola, soy Alex Jeanpier Quispe Sierra, un desarrollador web junior con experiencia en tecnologías modernas. Me encanta aprender nuevas herramientas y crear aplicaciones impactantes.</p>
+        </div>
+        <div class="header-image">
+            <img src="/img/alex.jpeg" alt="Foto de Alex Jeanpier Quispe Sierra">
+        </div>
+    </header>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+        }
+    </script>
+
+    <div th:replace="partials/footer :: footer"></div>
+    <div th:replace="partials/bot :: chatbot"></div>
+</body>
+</html>
