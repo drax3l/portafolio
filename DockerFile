@@ -1,9 +1,8 @@
 # Etapa de construcción con Maven
 FROM maven:3.8.6 AS build
 WORKDIR /app
-COPY pom.xml .
-COPY src ./src
-RUN mvn clean package -DskipTests
+COPY . .
+RUN mvn clean package
 
 # Etapa de ejecución con JDK 17
 FROM openjdk:17-jdk-slim
